@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mona-deployment
+  labels:
+    app: mona-deployment-nginx
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: mona-nginx-app
+  template:
+    metadata:
+      labels:
+        app: mona-nginx-app
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
